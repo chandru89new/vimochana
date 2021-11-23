@@ -1,0 +1,7 @@
+posts:
+  # - title: "Hey there."
+  #   path: "./test.md"
+  #   date: "2021-11-23"
+  - title: "Testing something"
+    path: "~/Dropbox/Notes/software-programming/async-pipe.md"
+    date: "2021-11-11"
