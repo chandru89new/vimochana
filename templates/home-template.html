@@ -5,21 +5,27 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Posts</title>
+  <title>druchan/zero</title>
   <link href="./style.css" rel="stylesheet" type="text/css" />
   <link
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&family=Rubik:ital,wght@0,300;0,700;1,300;1,700&display=swap"
     rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 </head>
 
 <body>
   <div></div>
   <div class="body">
     <header>
-      <div id="logo">zero.druchan.com</div>
-      <blockquote class="blog-description">
+      <div id="logo">
+        <a href="/" onclick="randomizeTitle">
+          <pre id="logo-pre"><code class="language-elm">module Druchan.Zero exposing (..)</code></pre>
+        </a>
+      </div>
+      <p class='blog-description'>
         musings from "code escapades" and other programming stuff.
-      </blockquote>
+      </p>
     </header>
     <div class="posts-header">
       All posts (latest created/updated first):
@@ -27,6 +33,10 @@
     {content}
   </div>
   <div></div>
+  <script src="./assets/homepage.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
 </body>
 
 </html>

@@ -21,6 +21,7 @@ body {
   @apply bg-white;
   line-height: 1.7em;
   padding: 5rem;
+  @apply border-r-4 border-yellow-200
 }
 
 pre, code {
@@ -38,7 +39,7 @@ a:hover {
 }
 
 pre {
-  @apply mb-4 p-3 pb-5 bg-gray-100 rounded;
+  @apply mb-4 p-3 pb-5 bg-gray-700 rounded;
   overflow-x: auto;
 }
 
@@ -60,19 +61,15 @@ p {
 }
 
 header {
-  @apply mb-10
+  @apply mb-10 pb-3 border-b border-yellow-100
 }
 
-header blockquote {
-  @apply pl-2 border-l-2 border-yellow-100 italic text-sm
+header .blog-description {
+  @apply text-sm italic
 }
 
 #logo {
-  @apply mb-3 text-lg p-2 bg-yellow-100 rounded inline-block
-}
-
-#logo.logo-smaller {
-  @apply text-base !important;
+  @apply mb-1 text-gray-600
 }
 
 #logo a {
@@ -83,15 +80,20 @@ header blockquote {
   @apply mb-5 italic;
 }
 
-.blog-description {
-}
-
 ul, ol {
   @apply mb-3 ml-5
 }
 
 li {
-  @apply py-1 list-decimal list-outside
+  @apply py-1 list-outside
+}
+
+ul li {
+  @apply list-disc
+}
+
+ol li {
+  @apply list-decimal
 }
 
 

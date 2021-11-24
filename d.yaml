@@ -1,7 +1,11 @@
 posts:
-  # - title: "Hey there."
-  #   path: "./test.md"
-  #   date: "2021-11-23"
   - title: "Async pipes"
     path: "~/Dropbox/Notes/software-programming/async-pipe.md"
     date: "2021-11-11"
+  - title: "Build tool-building tools"
+    path: "~/Dropbox/Notes/software-programming/build-tool-building-tools.md"
+    date: "2021-11-21"
+  - title: "Promise.allSettled"
+    path: "~/Dropbox/Notes/software-programming/promise-all.md"
+    date: "2021-11-22"
+

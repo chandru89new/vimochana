@@ -25,7 +25,7 @@ const normalizePath = p => {
 }
 const { posts } = y2j.load(fs.readFileSync('./d.yaml', 'utf-8'))
 
-const stringReplace = pattern => replaceWith => string => string.replace(pattern, replaceWith)
+const stringReplace = pattern => replaceWith => string => string.replaceAll(pattern, replaceWith)
 const readFile = (p) => {
   try {
     return fs.readFileSync(p, 'utf-8')
@@ -62,13 +62,14 @@ const writeToDisk = fileName => contents => {
   }
 }
 const updateIndexPage = posts => {
-  let html = '<ul>'
+  let html = '<ol>'
   let i = 0
   while (i < posts.length) {
     const post = posts[i]
     html += `<li><a href="./${getFileName(post.path)}.html">${post.title}</a></li>`
     i++
   }
+  html += '</ol>'
   try {
     const homePageTemplate = fs.readFileSync(config.defaultHomeTemplate, 'utf-8')
     const newHomePage = stringReplace('{content}')(html)(homePageTemplate)

@@ -1,2 +1,6 @@
 node_modules/
 www/
+.firebase/
+firebase.json
+.firebaserc
+assets/
