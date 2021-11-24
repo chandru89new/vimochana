@@ -45,7 +45,7 @@ const generateNewHtmlFile = title => content => {
   try {
     const blogTemplateContents = fs.readFileSync(path.resolve(__dirname, config.defaultBlogTemplate), 'utf-8')
     const newHtmlFileContents = pipe([
-      stringReplace('{title}')(title),
+      stringReplace('{title}')(title + ' — ' + config.site.title),
       stringReplace('{content}')(content)
     ])(blogTemplateContents)
     return newHtmlFileContents
@@ -72,7 +72,8 @@ const updateIndexPage = posts => {
   html += '</ol>'
   try {
     const homePageTemplate = fs.readFileSync(config.defaultHomeTemplate, 'utf-8')
-    const newHomePage = stringReplace('{content}')(html)(homePageTemplate)
+    const newHomePage =
+      stringReplace('{content}')(html)(homePageTemplate)
     const _ = fs.writeFileSync('./tmp/index.html', newHomePage, { encoding: 'utf-8' })
     return true
   } catch (e) {
