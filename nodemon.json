@@ -1,0 +1,13 @@
+{
+  "watch": [
+    "index.js",
+    "templates",
+    "d.yaml",
+    "config.yaml",
+    "assets",
+    "package.json",
+    "postcss.config.js",
+    "tailwind.config.js"
+  ],
+  "ext": "html, css"
+}

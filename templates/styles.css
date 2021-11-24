@@ -1,0 +1,105 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/** 
+  link-color = 
+*/
+
+body {
+  font-family: Rubik, sans-serif;
+  font-weight: 300;
+  @apply bg-yellow-100;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 10rem 700px auto;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+.body {
+  @apply bg-white;
+  line-height: 1.7em;
+  padding: 5rem;
+}
+
+pre, code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
+  font-size: 0.85rem; 
+}
+
+a {
+  @apply text-yellow-500 pb-1 border-b border-yellow-300;
+}
+
+a:hover {
+  @apply border-gray-100;
+}
+
+pre {
+  @apply mb-4 p-3 pb-5 bg-gray-100 rounded;
+  overflow-x: auto;
+}
+
+pre > code {
+  @apply bg-transparent p-0 !important
+}
+
+code {
+  @apply bg-yellow-100 p-1 rounded
+}
+
+h1 {
+  @apply mb-7 text-xl tracking-tight;
+  font-weight: 700;
+}
+
+p {
+  @apply mb-4
+}
+
+header {
+  @apply mb-10
+}
+
+header blockquote {
+  @apply pl-2 border-l-2 border-yellow-100 italic text-sm
+}
+
+#logo {
+  @apply mb-3 text-lg p-2 bg-yellow-100 rounded inline-block
+}
+
+#logo.logo-smaller {
+  @apply text-base !important;
+}
+
+#logo a {
+  @apply border-0
+}
+
+.posts-header {
+  @apply mb-5 italic;
+}
+
+.blog-description {
+}
+
+ul, ol {
+  @apply mb-3 ml-5
+}
+
+li {
+  @apply py-1 list-decimal list-outside
+}
+
+
+@media (max-width: 767px) {
+  body {
+    grid-template-columns: 0px 100% 0px;
+  }
+  .body {
+    padding: 3rem;
+  }
+}

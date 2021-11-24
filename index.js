@@ -18,7 +18,7 @@ const { marked } = require('marked')
 const mkdirp = require('mkdirp')
 const os = require('os')
 const { execSync } = require('child_process')
-
+const { config } = y2j.load(fs.readFileSync('./config.yaml', 'utf-8'))
 
 const normalizePath = p => {
   return p[0] === '~' ? path.join(os.homedir(), p.slice(1)) : p
@@ -43,14 +43,14 @@ const convertToHtml = markdownContent => {
 }
 const generateNewHtmlFile = title => content => {
   try {
-    const blogTemplateContents = fs.readFileSync('./blog-template.html', 'utf-8')
+    const blogTemplateContents = fs.readFileSync(path.resolve(__dirname, config.defaultBlogTemplate), 'utf-8')
     const newHtmlFileContents = pipe([
       stringReplace('{title}')(title),
       stringReplace('{content}')(content)
     ])(blogTemplateContents)
     return newHtmlFileContents
   } catch (e) {
-    throw new Error('i could not read the template file. either the file does not exist, or there is some other problem.')
+    throw new Error('i could not read the blog template file. either the file does not exist, or there is some other problem.')
   }
 }
 const writeToDisk = fileName => contents => {
@@ -70,7 +70,7 @@ const updateIndexPage = posts => {
     i++
   }
   try {
-    const homePageTemplate = fs.readFileSync('./home-page-template.html', 'utf-8')
+    const homePageTemplate = fs.readFileSync(config.defaultHomeTemplate, 'utf-8')
     const newHomePage = stringReplace('{content}')(html)(homePageTemplate)
     const _ = fs.writeFileSync('./tmp/index.html', newHomePage, { encoding: 'utf-8' })
     return true
@@ -79,10 +79,18 @@ const updateIndexPage = posts => {
   }
 }
 
+const cleanup = () => {
+  execSync('rm -rf ./www/')
+  mkdirp('./www')
+  execSync('mv ./tmp ./www')
+  execSync('cp -r ./assets ./www/assets')
+  execSync('rm -rf ./tmp')
+}
+
 const main = () => {
   try {
     mkdirp.sync('./tmp')
-    console.time('took')
+    console.time('it took')
     let i = 0
     while (i < posts.length) {
       const post = posts[i]
@@ -96,13 +104,12 @@ const main = () => {
       i++
     }
     const _ = updateIndexPage(posts.sort((a, b) => a.date <= b.date ? 1 : -1))
-    execSync('rm -rf ./www/')
-    mkdirp('./www')
-    execSync('mv ./tmp ./www')
-    execSync('rm -rf ./tmp')
-    log('done')
-    console.timeEnd('took')
+    execSync('yarn build-css')
+    cleanup()
+    log('site generated')
+    console.timeEnd('it took')
   } catch (e) {
+    execSync('rm -rf ./tmp')
     console.log(e.toString())
   }
 }

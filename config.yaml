@@ -1,0 +1,3 @@
+config:
+  defaultHomeTemplate: './templates/home-template.html'
+  defaultBlogTemplate: './templates/blog-template.html'
