@@ -44,7 +44,7 @@ pre {
 }
 
 pre > code {
-  @apply bg-transparent p-0 !important
+  @apply bg-transparent !important
 }
 
 code {
