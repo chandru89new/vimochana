@@ -20,6 +20,6 @@
     "dev": "nodemon index.js",
     "build": "node index.js",
     "build-css": "postcss ./templates/styles.css -o ./tmp/style.css",
-    "deploy": "firebase deploy --only hosting:zero-druchan"
+    "deploy": "yarn build && firebase deploy --only hosting:zero-druchan"
   }
 }

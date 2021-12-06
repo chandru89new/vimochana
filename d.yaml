@@ -8,5 +8,11 @@ posts:
   - title: "Async pipe"
     path: "~/Dropbox/Notes/software-programming/async-pipe.md"
     date: "2021-11-23"
+  - title: "Catching stray console in git diff"
+    path: "~/Dropbox/Notes/software-programming/using-git-to-find-consolelog.md"
+    date: "2021-11-30"
+  - title: "Should you learn monads?"
+    path: "~/Dropbox/Notes/software-programming/learning-monads.md"
+    date: "2021-12-06"
 
 
